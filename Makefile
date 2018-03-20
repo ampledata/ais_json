@@ -57,4 +57,16 @@ pylint: lint
 coverage:
 	coverage report -m
 
-test: lint pep8 nosetests coverage
+test: lint pep8 mypy nosetests
+
+mypy:
+	mypy --strict .
+
+docker_install_requirements:
+	docker_install_requirements.sh
+
+docker_build:
+	docker build --build-arg github_token=${GITHUB_TOKEN} .
+
+checkmetadata:
+	python setup.py check -s --metadata --restructuredtext

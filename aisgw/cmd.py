@@ -19,7 +19,7 @@ __copyright__ = 'Copyright 2017 Daniel J. Grinkevich'  # NOQA pylint: disable=R0
 __license__ = 'GNU General Public License, Version 3'  # NOQA pylint: disable=R0801
 
 
-def cli():
+def cli() -> None:
     """Command Line interface for AIS Gateway."""
 
     parser = argparse.ArgumentParser()
@@ -41,7 +41,8 @@ def cli():
     import ais.stream
     while 1:
         for msg in ais.stream.decode(sock.makefile('r'), keep_nmea=True):
-            rxtime = datetime.datetime.utcnow().strftime("%Y%m%d%H%M%S") #YYYYMMDDHHMMSS
+            rxtime = datetime.datetime.utcnow().strftime(
+                "%Y%m%d%H%M%S") # YYYYMMDDHHMMSS
             parsed = json.loads(json.dumps(msg))
 
             ais = {
@@ -102,11 +103,11 @@ def cli():
             r = requests.post(api_url, files={'jsonais': (None, post)})
             # dump non common packets for debugging
             if parsed['id'] not in (1, 2, 3, 4):
-                print '---'
-                print 'NMEA:', parsed['nmea']
-                print 'Parsed:', parsed
-                print 'Post:', post
-                print 'Result:', json.loads(r.text)['description']
+                print('---')
+                print('NMEA: {}'.format(parsed['nmea']))
+                print('Parsed: {}'.format(parsed))
+                print('Post: {}'.format(post))
+                print('Result: {}'.format(json.loads(r.text)['description']))
 
 
 if __name__ == '__main__':

@@ -47,6 +47,6 @@ setuptools.setup(
     url='https://github.com/ampledata/aisgw',
     zip_safe=False,
     include_package_data=True,
-    install_requires=['requests >= 2.7.0', 'libais >= 0.16'],
+    install_requires=['requests', 'libais >= 0.16'],
     entry_points={'console_scripts': ['aisgw = aisgw.cmd:cli']}
 )
