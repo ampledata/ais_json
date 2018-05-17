@@ -24,7 +24,7 @@ def cli() -> None:
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '-u', '--port', help='UDP Listen port', default=aisgw.DEFAULT_PORT)
+        '-P', '--port', help='UDP Listen port', default=aisgw.DEFAULT_PORT)
     parser.add_argument(
         '-u', '--api_url', help='APRS.FI URL', default=aisgw.DEFAULT_URL)
     parser.add_argument(
