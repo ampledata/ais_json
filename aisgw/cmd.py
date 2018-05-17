@@ -26,14 +26,20 @@ def cli() -> None:
     parser.add_argument(
         '-u', '--port', help='UDP Listen port', default=aisgw.DEFAULT_PORT)
     parser.add_argument(
-        '-p', '--password', help='APRS.FI AIS API Password', required=True)
+        '-u', '--api_url', help='APRS.FI URL', default=aisgw.DEFAULT_URL)
     parser.add_argument(
-        '-c', '--callsign', help='APRS.FI Login/Callsign', required=True)
+        '-p', '--password', help='APRS.FI AIS API Password')
+    parser.add_argument(
+        '-c', '--callsign', help='APRS.FI Login/Callsign')
 
     opts = parser.parse_args()
 
-    api_url = 'http://aprs.fi/jsonais/post/' + opts.password
-    path = {'name': opts.callsign, 'url': api_url}
+    if opts.password and opts.callsign:
+        api_url = '/'.join([opts.api_url, opts.password])
+        path = {'name': opts.callsign, 'url': api_url}
+    else:
+        api_url = opts.api_url
+        path = {}
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind(('127.0.0.1', opts.port))

@@ -15,7 +15,7 @@ Python AIS Gateway .
 
 """
 
-from .constants import LOG_FORMAT, LOG_LEVEL, DEFAULT_PORT  # NOQA
+from .constants import LOG_FORMAT, LOG_LEVEL, DEFAULT_PORT, DEFAULT_URL  # NOQA
 
 __author__ = 'Daniel J. Grinkevich'  # NOQA pylint: disable=R0801
 __copyright__ = 'Copyright 2017 Daniel J. Grinkevich'  # NOQA pylint: disable=R0801
