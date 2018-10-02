@@ -47,7 +47,7 @@ def cli() -> None:
         path = {}
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.bind(('127.0.0.1', opts.port))
+    sock.bind((opts.host, opts.port))
 
     import ais.stream
     while 1:
