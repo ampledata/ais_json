@@ -47,6 +47,7 @@ def cli() -> None:
         path = {}
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    print('Listening on {}:{}'.format(opts.host, opts.port))
     sock.bind((opts.host, opts.port))
 
     import ais.stream
