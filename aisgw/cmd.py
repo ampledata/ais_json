@@ -24,14 +24,18 @@ def cli() -> None:
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '-P', '--port', help='UDP Listen port', default=aisgw.DEFAULT_PORT,
+        '-P', '--port', help='UDP Listen Port', default=aisgw.DEFAULT_PORT,
         type=int)
+    parser.add_argument(
+        '-H', '--host', help='Listen Host', default=aisgw.DEFAULT_HOST
+    )
     parser.add_argument(
         '-u', '--api_url', help='APRS.FI URL', default=aisgw.DEFAULT_URL)
     parser.add_argument(
         '-p', '--password', help='APRS.FI AIS API Password')
     parser.add_argument(
         '-c', '--callsign', help='APRS.FI Login/Callsign')
+
 
     opts = parser.parse_args()
 

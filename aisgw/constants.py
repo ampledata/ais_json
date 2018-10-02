@@ -22,5 +22,6 @@ LOG_FORMAT = logging.Formatter(
      '%(message)s'))
 
 DEFAULT_PORT = 5050
+DEFAULT_HOST = '0.0.0.0'
 
 DEFAULT_URL = 'http://aprs.fi/jsonais/post'
